@@ -15,8 +15,8 @@ function [path] = geraTraj(filename)
     startLocation = [1.17 0];
     endLocation = [5.5 2.5];
 
-    prm.NumNodes = 2500;
-    prm.ConnectionDistance = 0.18;
+    prm.NumNodes = 250;
+    prm.ConnectionDistance = 0.35;
 
     path = findpath(prm, startLocation, endLocation);
     
