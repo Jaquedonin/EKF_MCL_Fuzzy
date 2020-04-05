@@ -4,7 +4,7 @@ clear velPub
 clear velSub
 clear odomSub
 clear msg
-ipaddress = '192.168.0.19';
+ipaddress = '192.168.0.11';
 rosinit(ipaddress);
 
 gazebo = ExampleHelperGazeboCommunicator;
@@ -20,14 +20,14 @@ msg = rosmessage('geometry_msgs/Twist');
 %%
 positionRef = geraTraj('mapa.bmp');
 
-%InitialX = [0;0.35;0.7;1];
+%InitialX = [1.17;];
 Xref = positionRef(:,1);
 %Xref = [InitialX;Xref];
 Vx = diff(Xref);
 Ax = diff(Vx);
 
 
-%InitialY = [-0.35;-0.35;-0.35;-0.35];
+%InitialY = [-0.35;];
 Yref = positionRef(:,2);
 %Yref = [InitialY;Yref];
 Vy = diff(Yref);
@@ -140,5 +140,5 @@ for i = 1:length(Xref)
     msg.Angular.Z = FuzzyOutput(2);
     send(velPub, msg); 
      
-    pause(5);
+    pause(2);
 end
